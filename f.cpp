@@ -41,49 +41,70 @@ std::string generateHtmlOverview(const std::string& cppFileName) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C++ Code Overview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/monokai-sublime.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <style>
-        /* Add CSS styles for code formatting here */
         body {
-    font-family: Consolas, monospace;
-    background-color: #1e1e1e;
-    color: #d4d4d4;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #252526;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-h2 {
-    color: #569cd6;
-}
-
-pre {
-    background-color: #1e1e1e;
-    padding: 10px;
-    border-radius: 5px;
-    overflow: auto;
-    margin-top: 20px;
-}
-
-code {
-    font-family: Consolas, monospace;
-}
-
-.keyword { color: #569cd6; }
-.type { color: #4ec9b0; }
-.variable { color: #9cdcfe; }
-.operator { color: #b5cea8; }
-.number { color: #b5cea8; }
-.comment { color: #6a9955; font-style: italic; }
-
-        
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #282c34;
+            color: #abb2bf;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #2c313c;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #61afef;
+        }
+        pre code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            overflow-x: auto;
+            background-color: #2c313c;
+            color: #abb2bf;
+        }
+        .hljs-keyword {
+            color: #c678dd;
+        }
+        .hljs-built_in {
+            color: #56b6c2;
+        }
+        .hljs-type {
+            color: #61afef;
+        }
+        .hljs-literal {
+            color: #d19a66;
+        }
+        .hljs-number {
+            color: #d19a66;
+        }
+        .hljs-string {
+            color: #98c379;
+        }
+        .hljs-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        .hljs-function {
+            color: #61afef;
+        }
+        .hljs-title {
+            color: #e06c75;
+        }
+        .hljs-params {
+            color: #dcdfe4;
+        }
     </style>
 </head>
 <body>
