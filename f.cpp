@@ -12,9 +12,33 @@ std::string escapeHtml(const std::string& unsafe) {
     return escaped;
 }
 
+std::string formatCppCode(const std::string& input) {
+    // Simulated formatting - indent with two spaces
+    std::string formattedCode;
+    int indentLevel = 0;
+    std::regex pattern(R"((\{|\}))");
+    std::smatch match;
+
+    for (char c : input) {
+        if (std::regex_search(std::string(1, c), match, pattern)) {
+            if (match[0] == "{") {
+                formattedCode += "\n" + std::string(2 * indentLevel, ' ') + "{";
+                ++indentLevel;
+            } else if (match[0] == "}") {
+                --indentLevel;
+                formattedCode += "\n" + std::string(2 * indentLevel, ' ') + "}";
+            }
+        } else {
+            formattedCode += c;
+        }
+    }
+
+    return formattedCode;
+}
+
 std::string generateHTML(const std::string& input) {
-    std::string formattedCode = escapeHtml(input);
-    // Add more code here to format C++ code into HTML
+    std::string formattedCode = formatCppCode(input);
+    std::string escapedCode = escapeHtml(formattedCode);
 
     std::string fullHTML = R"(
 <!DOCTYPE html>
@@ -60,15 +84,12 @@ std::string generateHTML(const std::string& input) {
         .operator { color: #b5cea8; }
         .number { color: #b5cea8; }
         .comment { color: #6a9955; font-style: italic; }
-        .tag { color: #569cd6; }
-        .attribute { color: #9cdcfe; }
-        .string { color: #ce9178; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Formatted Code</h2>
-        <pre><code>)" + formattedCode + R"(</code></pre>
+        <pre><code>)" + escapedCode + R"(</code></pre>
     </div>
 </body>
 </html>)";
